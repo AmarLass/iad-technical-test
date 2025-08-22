@@ -38,7 +38,7 @@ export function useFetchRestaurant({ restaurantId }: { restaurantId: string | st
   return useQuery({
     queryKey: [`company`, restaurantId],
     queryFn: () => {
-      const url = `restorants/${restaurantId}`;
+      const url = `restaurants/${restaurantId}`;
       return api(url).json<Restaurant>();
     },
   });

@@ -23,6 +23,13 @@ Keep in mind that we style with [Tailwind](https://tailwindcss.com/)
     ```
     [plugin:vite:import-analysis] Failed to resolve import "vuetify/lib/components/VApp" from "src/App.vue". Does the file exist?
     ```
+- Fix fetch error in `src/composables/restaurants.ts`
+    ```
+    # In useFetchRestaurant function
+    Line 42:
+        replace # const url = `restorants/${restaurantId}`;
+        by      # const url = `restaurants/${restaurantId}`;
+    ```
 
 ## Run the application
 
