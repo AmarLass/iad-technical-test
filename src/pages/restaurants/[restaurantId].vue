@@ -3,15 +3,23 @@ import { useFetchRestaurant } from '~/composables/restaurants';
 
 const { params } = useRoute();
 const { data: restaurant, isError } = useFetchRestaurant({ restaurantId: params.restaurantId });
+
+// Calcul de la note moyenne
+const averageRating = computed(() =>
+  restaurant.value?.reviews?.length
+    ? restaurant.value.reviews.reduce((sum: number, r: { rating: number }) => sum + r.rating, 0) / restaurant.value.reviews.length
+    : 0,
+);
 </script>
 
 <template>
   <VAlert v-if="isError" type="warning" class="mt-4">
-    TODO: It might be an Fetch error
-    <br>
-    You should fix that
+    Une erreur est survenue lors de la récupération du restaurant.
   </VAlert>
-  <div v-else class="grid grid-cols-[minmax(0,_1fr)_16rem] gap-6">
+  <div
+    v-else
+    class="grid grid-cols-1 md:grid-cols-[minmax(0,_1fr)_16rem] gap-6"
+  >
     <VCard v-if="restaurant">
       <VImg
         v-for="photo in restaurant.photos"
@@ -24,32 +32,35 @@ const { data: restaurant, isError } = useFetchRestaurant({ restaurantId: params.
         <VCardTitle class="!text-4xl text-white">
           {{ restaurant.name }}
         </VCardTitle>
-        <VAlert variant="flat" type="warning" class="mx-4 inline-block">
-          TODO: display the mean rating
-          <br>
-          Vuetify has a component for this. Use this one
-        </VAlert>
+        <div class="mx-4 w-1/2 flex items-center gap-2">
+          <VRating
+            :model-value="averageRating"
+            color="amber"
+            half-increments
+            readonly
+            size="small"
+          />
+          <span class="text-sm text-white">({{ averageRating.toFixed(1) }})</span>
+        </div>
       </VImg>
       <VCardText>
         <div class="grid grid-cols-2 gap-4">
           <RestaurantLocation :location="restaurant.location" />
           <KeyValue icon="mdi-phone">
             <p class="text-body-1">
-              {{ restaurant.phone }}
-              <VAlert type="warning">
-                ↑ TODO: we would like to display the formatted phone
-              </VAlert>
+              {{ restaurant.display_phone || restaurant.phone }}
             </p>
           </KeyValue>
         </div>
       </VCardText>
     </VCard>
-    <aside>
-      <VAlert type="warning">
-        TODO: this should go under the company card on small device
-      </VAlert>
+    <aside class="md:col-span-1 md:row-span-1 mt-6 md:mt-0">
       <ul class="pa-0">
-        <RestaurantReview />
+        <RestaurantReview
+          v-for="review in restaurant?.reviews"
+          :key="review.id"
+          :review="review"
+        />
       </ul>
     </aside>
   </div>
