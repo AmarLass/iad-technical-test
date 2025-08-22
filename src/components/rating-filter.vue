@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { defineEmits, ref } from 'vue';
+
+const emit = defineEmits<{
+  (e: 'update:rating', value: number): void
+}>();
+
 const ratingFilterItems = [
   { title: `all restaurants`, value: 0 },
   { title: `5 stars`, value: 5 },
@@ -7,18 +13,30 @@ const ratingFilterItems = [
   { title: `2 stars or more`, value: 2 },
   { title: `1 star or more`, value: 1 },
 ];
+
+const selected = ref(0);
+// Émettre la valeur sélectionnée à chaque changement
+function onChange(value: number) {
+  selected.value = value;
+  emit(`update:rating`, value);
+}
 </script>
 
 <template>
   <VCard variant="outlined">
-    <VAlert type="info">
-      TODO: this is a bonus! <br>
-      Implement the rating filter
-    </VAlert>
     <VCardText>
       <div class="flex flex-wrap items-center justify-between gap-8">
-        <strong>Filter the restaurants by ratings</strong>
-        <VSelect :items="ratingFilterItems" variant="solo" hide-details="auto" placeholder="all restaurants" />
+        <strong>Filtrer les restaurants par note</strong>
+        <VSelect
+          v-model="selected"
+          :items="ratingFilterItems"
+          item-title="title"
+          item-value="value"
+          variant="solo"
+          hide-details="auto"
+          placeholder="all restaurants"
+          @update:model-value="onChange"
+        />
       </div>
     </VCardText>
   </VCard>
