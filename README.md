@@ -17,6 +17,13 @@ Keep in mind that we style with [Tailwind](https://tailwindcss.com/)
 2. Make the commit as much atomic as possible.
 3. When done, share your updated repository with us!
 
+## Fixes
+
+- Fix application not running
+    ```
+    [plugin:vite:import-analysis] Failed to resolve import "vuetify/lib/components/VApp" from "src/App.vue". Does the file exist?
+    ```
+
 ## Run the application
 
 ```bash

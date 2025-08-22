@@ -1,10 +1,15 @@
 import 'uno.css';
+import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 import generatedRoutes from 'virtual:generated-pages';
 import { VueQueryPlugin, type VueQueryPluginOptions } from '@tanstack/vue-query';
 
 // vuetify
+import 'vuetify/styles';
 import { createVuetify } from 'vuetify';
+import * as components from 'vuetify/components';
+import * as directives from 'vuetify/directives';
+
 import './main.scss';
 
 import App from './app.vue';
@@ -33,6 +38,8 @@ app.use(VueQueryPlugin, vueQueryPluginOptions);
 
 // Vuetify
 app.use(createVuetify({
+  components,
+  directives,
   defaults: {
     VAlert: { variant: `tonal` },
     VCard: {

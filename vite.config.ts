@@ -28,7 +28,7 @@ export default defineConfig(({ mode }) => ({
       reactivityTransform: false,
     }),
 
-    vuetify(),
+    vuetify({ autoImport: false }),
 
     // https://github.com/hannoeru/vite-plugin-pages
     Pages({
