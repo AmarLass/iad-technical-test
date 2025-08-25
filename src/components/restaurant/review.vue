@@ -10,7 +10,7 @@ defineProps<{
 </script>
 
 <template>
-  <VCard class="va-company-review" tag="li">
+  <VCard class="va-company-review mb-2" tag="li">
     <VCardText>
       <div class="flex items-center gap-2 mb-2">
         <VRating
@@ -18,7 +18,7 @@ defineProps<{
           color="amber"
           half-increments
           readonly
-          size="small"
+          size="30"
         />
         <span class="text-sm text-gray-600">({{ review.rating.toFixed(1) }})</span>
       </div>

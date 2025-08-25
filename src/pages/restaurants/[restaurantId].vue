@@ -38,13 +38,13 @@ const averageRating = computed(() =>
             color="amber"
             half-increments
             readonly
-            size="small"
+            size="30"
           />
           <span class="text-sm text-white">({{ averageRating.toFixed(1) }})</span>
         </div>
       </VImg>
       <VCardText>
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <RestaurantLocation :location="restaurant.location" />
           <KeyValue icon="mdi-phone">
             <p class="text-body-1">

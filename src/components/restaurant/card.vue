@@ -27,7 +27,7 @@ const averageRating = props.restaurant.reviews && props.restaurant.reviews.lengt
         color="amber"
         half-increments
         readonly
-        size="small"
+        size="30"
       />
       <span class="text-sm text-gray-600">({{ averageRating.toFixed(1) }})</span>
     </div>

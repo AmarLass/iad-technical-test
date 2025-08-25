@@ -20,9 +20,36 @@ Keep in mind that we style with [Tailwind](https://tailwindcss.com/)
 ## Fixes
 
 - Fix application not running
-    ```
-    [plugin:vite:import-analysis] Failed to resolve import "vuetify/lib/components/VApp" from "src/App.vue". Does the file exist?
-    ```
+
+> **Console error:**
+```text
+[plugin:vite:import-analysis] Failed to resolve import "vuetify/lib/components/VApp" from "src/App.vue". Does the file exist?
+```
+
+To resolve this error, update your configuration as follows:
+
+**In `vite.config.ts` (Line 31):**
+```
+vuetify({ autoImport: false })
+```
+
+**In `src/main.ts`:**
+```ts
+import * as components from 'vuetify/components';
+import * as directives from 'vuetify/directives';
+
+// ...
+
+app.use(createVuetify({
+  components,
+  directives,
+  defaults: {
+    VAlert: { variant: `tonal` },
+    VCard: {},
+    VBtn: { variant: `outlined` },
+  },
+}));
+```
 - Fix fetch error in `src/composables/restaurants.ts`
     ```
     # In useFetchRestaurant function
