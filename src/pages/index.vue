@@ -5,7 +5,7 @@ import { useFetchRestaurants } from '~/composables/restaurants';
 const { data: restaurants, isError } = useFetchRestaurants();
 const selectedRating = ref(0);
 
-// Filtrer les restaurants selon la note sélectionnée
+// Filter restaurants by the currently selected rating
 const filteredRestaurants = computed(() =>
   !restaurants.value
     ? []

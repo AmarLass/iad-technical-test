@@ -4,7 +4,7 @@ import { useFetchRestaurant } from '~/composables/restaurants';
 const { params } = useRoute();
 const { data: restaurant, isError } = useFetchRestaurant({ restaurantId: params.restaurantId });
 
-// Calcul de la note moyenne
+// Compute the average rating for the selected restaurant
 const averageRating = computed(() =>
   restaurant.value?.reviews?.length
     ? restaurant.value.reviews.reduce((sum: number, r: { rating: number }) => sum + r.rating, 0) / restaurant.value.reviews.length
@@ -14,7 +14,7 @@ const averageRating = computed(() =>
 
 <template>
   <VAlert v-if="isError" type="warning" class="mt-4">
-    Une erreur est survenue lors de la récupération du restaurant.
+    An error occurred while fetching the restaurant.
   </VAlert>
   <div
     v-else

@@ -1,22 +1,5 @@
 # Iad coding Challenge
 
-## Summary
-
-A developer has just made a POC for our new restaurant application.  
-Alas, he's called on a new mission!
-
-You're the one to finish the job.  
-It was almost done, but there is some `TODO` in the code that need do be fixed.  
-Don't neglect to fix any `typescript`/`test` you encounter. 
-
-Keep in mind that we style with [Tailwind](https://tailwindcss.com/)
-
-## Process
-
-1. Make a new repo and push your code in it.
-2. Make the commit as much atomic as possible.
-3. When done, share your updated repository with us!
-
 ## Fixes
 
 - Fix application not running

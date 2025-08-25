@@ -5,7 +5,7 @@ const props = defineProps<{
   restaurant: Restaurant
 }>();
 
-// Calcul de la note moyenne
+// Compute the average rating for the restaurant
 const averageRating = props.restaurant.reviews && props.restaurant.reviews.length
   ? props.restaurant.reviews.reduce((sum: number, r: { rating: number }) => sum + r.rating, 0) / props.restaurant.reviews.length
   : 0;

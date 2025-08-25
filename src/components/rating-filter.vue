@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineEmits, ref } from 'vue';
+import { ref } from 'vue';
 
 const emit = defineEmits<{
   (e: 'update:rating', value: number): void
@@ -15,7 +15,7 @@ const ratingFilterItems = [
 ];
 
 const selected = ref(0);
-// Émettre la valeur sélectionnée à chaque changement
+// Emit the selected value on each change
 function onChange(value: number) {
   selected.value = value;
   emit(`update:rating`, value);
