@@ -13,7 +13,7 @@ const filteredRestaurants = computed(() =>
       ? restaurants.value
       : restaurants.value.filter(r =>
         r.reviews?.length
-          && (r.reviews.reduce((sum, review) => sum + review.rating, 0) / r.reviews.length) === selectedRating.value,
+          && (r.reviews.reduce((sum, review) => sum + review.rating, 0) / r.reviews.length) >= selectedRating.value,
       ),
 );
 </script>
